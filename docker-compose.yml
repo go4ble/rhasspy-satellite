@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+  rhasspy:
+    image: rhasspy/rhasspy:latest
+    ports:
+      - 12101:12101
+    volumes:
+      - ./profiles:/profiles
+    devices:
+      - /dev/snd
+    command: --profile en --user-profiles /profiles
+
+#  speakers:
+#    image: rhasspy/rhasspy-speakers-cli-hermes:latest
+#    devices:
+#      - /dev/snd
+#    command: >
+#      --play-command aplay
+#      --host ${HOST:?err}
+#      --port ${PORT:?err}
+#      --site-id ${HOSTNAME:?err}
+#
+#  microphone:
+#    image: go4ble/rhasspy-microphone-cli-hermes:latest
+#    devices:
+#      - /dev/snd
+#    # TODO add -q back
+#    command: >
+#      --sample-rate 16000
+#      --sample-width 2
+#      --channels 1
+#      --record-command 'arecord -r 16000 -f S16_LE -c 1 -t raw -D "card 1"'
+#      --host ${HOST:?err}
+#      --port ${PORT:?err}
+#      --site-id ${HOSTNAME:?err}
+#      --udp-audio-port 12202
+#
+#  pixel-ring:
+#    image: go4ble/hermes-respeaker-pixel-ring:latest
+#    devices:
+#      - /dev/spidev0.0
+#      - /dev/spidev0.1
+#      - /dev/gpiomem
+#    environment:
+#      HOST: ${HOST:?err}
+#      PORT: ${PORT:?err}
+#      SITE_ID: ${HOSTNAME:?err}
