@@ -1,0 +1,3 @@
+[submodule "jabra"]
+	path = jabra
+	url = https://gist.github.com/3ec644d2eb180d145db2b42c6ad13b53.git
